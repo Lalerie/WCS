@@ -54,7 +54,7 @@ print("---"*40)
 
 """
 
-fig, ax = plt.subplots(5, 1, figsize = (10, 40))
+fig, ax = plt.subplots(4, 1, figsize = (10, 40))
 
 sns.countplot(x='continent', data=df, palette='plasma', ax=ax[0])
 ax[0].set_title('Distribution of cars by continent')
@@ -68,8 +68,10 @@ ax[2].set_title("Distribution of cylinders by cubicinches')")
 sns.heatmap(df.select_dtypes("number").corr(), annot=True, center=0, cmap='plasma', ax=ax[3])
 ax[3].set_title('Heatmap of numerical columns')
 
-# sns.pairplot(df.select_dtypes("number"), palette='plasma', ax=ax[4])
-# ax[4].set_title('Pairplot of numerical columns')
-# plt.show()
-
 st.pyplot(fig, use_container_width=True)
+
+fig2, ax = plt.subplots()
+sns.pairplot(df.select_dtypes("number"), palette='plasma', ax=ax[0])
+ax[0].set_title('Pairplot of numerical columns')
+
+st.pyplot(fig2, use_container_width=True)
