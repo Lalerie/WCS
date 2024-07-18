@@ -68,8 +68,8 @@ ax[2].set_title("Distribution of cylinders by cubicinches')")
 sns.heatmap(df.select_dtypes("number").corr(), annot=True, center=0, cmap='plasma', ax=ax[3])
 ax[3].set_title('Heatmap of numerical columns')
 
-sns.pairplot(df.select_dtypes("number"), palette='plasma', ax=ax[4])
-ax[4].set_title('Pairplot of numerical columns')
-plt.show()
+# sns.pairplot(df.select_dtypes("number"), palette='plasma', ax=ax[4])
+# ax[4].set_title('Pairplot of numerical columns')
+# plt.show()
 
 st.pyplot(fig, use_container_width=True)
