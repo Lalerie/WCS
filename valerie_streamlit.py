@@ -22,13 +22,13 @@ df = pd.read_csv(url)
 st.write(df.head())
 
 """# Exploration"""
-st.write(df.info())
+st.write("Dataset info", df.info())
 print("---"*40)
 st.write("Dataset description", df.describe(include="all"))
 print("---"*40)
 st.write("Missed values", df.isna().sum())
 print("---"*40)
-st.write(df.duplicated().sum())
+st.write("There are : ", df.duplicated().sum(), " duplicates")
 print("---"*40)
 
 """## Graphiques
@@ -36,21 +36,21 @@ print("---"*40)
 """
 
 plt.title('Distribution of cars by continent')
-countplot = sns.countplot(x='continent', data=df, palette='plasma')
-st.pyplot(countplot.figure)
+car_countplot = sns.countplot(x='continent', data=df, palette='plasma')
+st.pyplot(car_countplot.figure)
 
 plt.title('Distribution of cylinders by weight')
-violinplot1 = sns.violinplot(x='cylinders', y='weightlbs', data=df, palette='plasma')
-st.pyplot(violinplot1.figure)
+car_violinplot1 = sns.violinplot(x='cylinders', y='weightlbs', data=df, palette='plasma')
+st.pyplot(car_violinplot1.figure)
 
 plt.title('Distribution of cylinders by cubicinches')
-violinplot2 = sns.violinplot(x='cylinders', y='cubicinches', data=df, palette='plasma')
-st.pyplot(violinplot2.figure)
+car_violinplot2 = sns.violinplot(x='cylinders', y='cubicinches', data=df, palette='plasma')
+st.pyplot(car_violinplot2.figure)
 
 plt.title('Heatmap of correlation')
-heatmap = sns.heatmap(df.select_dtypes("number").corr(), annot=True, center=0, cmap='plasma')
-st.pyplot(heatmap.figure)
+car_heatmap = sns.heatmap(df.select_dtypes("number").corr(), annot=True, center=0, cmap='plasma')
+st.pyplot(car_heatmap.figure)
 
 plt.title('Pairplot of numerical columns')
-pairplot = sns.pairplot(df.select_dtypes("number"), palette='plasma')
-st.pyplot(pairplot.figure)
+car_pairplot = sns.pairplot(df.select_dtypes("number"), palette='plasma')
+st.pyplot(car_pairplot.figure)
