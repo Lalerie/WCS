@@ -71,7 +71,7 @@ ax[3].set_title('Heatmap of numerical columns')
 st.pyplot(fig, use_container_width=True)
 
 fig2, ax = plt.subplots()
-sns.pairplot(df.select_dtypes("number"), palette='plasma', ax=ax[0])
+sns.pairplot(df.select_dtypes("number"), hue='continent', palette='plasma', ax=ax[0])
 ax[0].set_title('Pairplot of numerical columns')
 
 st.pyplot(fig2, use_container_width=True)
