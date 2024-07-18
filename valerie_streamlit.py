@@ -25,7 +25,7 @@ st.dataframe(df.style.highlight_max(axis=0))
 st.data_editor(
     df,
     column_config={
-        "continent": st.column_config.SelectboxColumn(
+        "origin continent": st.column_config.SelectboxColumn(
             "origin",
             help="The category of the app",
             width="medium",
@@ -54,22 +54,24 @@ print("---"*40)
 
 """
 
-# plt.title('Distribution of cars by continent')
-car_countplot = sns.countplot(x='continent', data=df, palette='plasma')
-st.pyplot(car_countplot.figure)
+ # plt.title('Distribution of cars by continent')
+fig, ax = plt.subplots(1,5,1)
+sns.countplot(x='continent', data=df, palette='plasma', ax = ax[0])
+# st.pyplot(car_countplot.figure)
 
 # plt.title('Distribution of cylinders by weight')
-car_violinplot1 = sns.violinplot(x='cylinders', y='weightlbs', data=df, palette='plasma')
-st.pyplot(car_violinplot1.figure)
+sns.violinplot(x='cylinders', y='weightlbs', data=df, palette='plasma', ax = ax[1])
+# st.pyplot(car_violinplot1.figure)
 
 # plt.title('Distribution of cylinders by cubicinches')
-car_violinplot2 = sns.violinplot(x='cylinders', y='cubicinches', data=df, palette='plasma')
-st.pyplot(car_violinplot2.figure)
+sns.violinplot(x='cylinders', y='cubicinches', data=df, palette='plasma', ax = ax[2])
+# st.pyplot(car_violinplot2.figure)
 
 # plt.title('Heatmap of correlation')
-car_heatmap = sns.heatmap(df.select_dtypes("number").corr(), annot=True, center=0, cmap='plasma')
-st.pyplot(car_heatmap.figure)
+sns.heatmap(df.select_dtypes("number").corr(), annot=True, center=0, cmap='plasma', ax = ax[3])
+# st.pyplot(car_heatmap.figure)
 
 # plt.title('Pairplot of numerical columns')
-car_pairplot = sns.pairplot(df.select_dtypes("number"), palette='plasma')
-st.pyplot(car_pairplot.figure)
+sns.pairplot(df.select_dtypes("number"), palette='plasma', ax = ax[4])
+
+st.pyplot(fig)
