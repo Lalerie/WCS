@@ -39,7 +39,8 @@ st.data_editor(
     hide_index=True,
 )
 """# Exploration"""
-st.write("Dataset info", df.info())
+st.write("Dataset info")
+st.table(df.info())
 print("---"*40)
 st.write("Dataset description", df.describe(include="all"))
 st.table(df.describe(include="all"))
