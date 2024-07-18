@@ -54,24 +54,21 @@ print("---"*40)
 
 """
 
- # plt.title('Distribution of cars by continent')
 fig, ax = plt.subplots(1, 5, figsize=(20, 5))
-sns.countplot(x='continent', data=df, palette='plasma', ax = ax[0])
-# st.pyplot(car_countplot.figure)
 
-# plt.title('Distribution of cylinders by weight')
-sns.violinplot(x='cylinders', y='weightlbs', data=df, palette='plasma', ax = ax[1])
-# st.pyplot(car_violinplot1.figure)
+sns.countplot(x='continent', data=df, palette='plasma', ax=ax[0])
+ax[0].set_title('Distribution of cars by continent')
 
-# plt.title('Distribution of cylinders by cubicinches')
-sns.violinplot(x='cylinders', y='cubicinches', data=df, palette='plasma', ax = ax[2])
-# st.pyplot(car_violinplot2.figure)
+sns.violinplot(x='cylinders', y='weightlbs', data=df, palette='plasma', ax=ax[1])
+ax[0].set_title('Distribution of cylinders by weight')
 
-# plt.title('Heatmap of correlation')
-sns.heatmap(df.select_dtypes("number").corr(), annot=True, center=0, cmap='plasma', ax = ax[3])
-# st.pyplot(car_heatmap.figure)
+sns.violinplot(x='cylinders', y='cubicinches', data=df, palette='plasma', ax=ax[2])
+ax[0].set_title("Distribution of cylinders by cubicinches')")
 
-# plt.title('Pairplot of numerical columns')
-sns.pairplot(df.select_dtypes("number"), palette='plasma', ax = ax[4])
+sns.heatmap(df.select_dtypes("number").corr(), annot=True, center=0, cmap='plasma', ax=ax[3])
+ax[3].set_title('Heatmap of numerical columns')
+
+sns.pairplot(df.select_dtypes("number"), palette='plasma', ax=ax[4])
+ax[4].set_title('Pairplot of numerical columns')
 
 st.pyplot(fig)
