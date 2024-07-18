@@ -25,8 +25,8 @@ st.dataframe(df.style.highlight_max(axis=0))
 st.data_editor(
     df,
     column_config={
-        "origin continent": st.column_config.SelectboxColumn(
-            "origin",
+        "continent": st.column_config.SelectboxColumn(
+            "origin continent",
             help="The category of the app",
             width="medium",
             options=[
@@ -41,7 +41,7 @@ st.data_editor(
 )
 """# Exploration"""
 st.write("Dataset info")
-st.table(df.info())
+st.write(df.info())
 print("---"*40)
 st.write("Dataset description", df.describe(include="all"))
 print("---"*40)
@@ -54,21 +54,22 @@ print("---"*40)
 
 """
 
-fig, ax = plt.subplots(5, 1, figsize=(10, 30))
+fig, ax = plt.subplots(5, 1)
 
 sns.countplot(x='continent', data=df, palette='plasma', ax=ax[0])
 ax[0].set_title('Distribution of cars by continent')
 
 sns.violinplot(x='cylinders', y='weightlbs', data=df, palette='plasma', ax=ax[1])
-ax[0].set_title('Distribution of cylinders by weight')
+ax[1].set_title('Distribution of cylinders by weight')
 
 sns.violinplot(x='cylinders', y='cubicinches', data=df, palette='plasma', ax=ax[2])
-ax[0].set_title("Distribution of cylinders by cubicinches')")
+ax[2].set_title("Distribution of cylinders by cubicinches')")
 
 sns.heatmap(df.select_dtypes("number").corr(), annot=True, center=0, cmap='plasma', ax=ax[3])
 ax[3].set_title('Heatmap of numerical columns')
 
 sns.pairplot(df.select_dtypes("number"), palette='plasma', ax=ax[4])
 ax[4].set_title('Pairplot of numerical columns')
+plt.show()
 
-st.pyplot(fig)
+st.pyplot(fig, use_container_width=True)
