@@ -20,7 +20,7 @@ st.title("Cars dataset exploration")
 url = "https://raw.githubusercontent.com/murpi/wilddata/master/quests/cars.csv"
 df = pd.read_csv(url)
 st.write("Dataset preview", df.head())
-sd.dataframe(df)
+st.dataframe(df)
 
 """# Exploration"""
 st.write("Dataset info", df.info())
