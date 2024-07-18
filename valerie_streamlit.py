@@ -55,7 +55,7 @@ print("---"*40)
 """
 
  # plt.title('Distribution of cars by continent')
-fig, ax = plt.subplots(1,5,1)
+fig, ax = plt.subplots(1, 5, figsize=(20, 5))
 sns.countplot(x='continent', data=df, palette='plasma', ax = ax[0])
 # st.pyplot(car_countplot.figure)
 
