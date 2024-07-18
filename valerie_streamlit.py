@@ -21,10 +21,11 @@ url = "https://raw.githubusercontent.com/murpi/wilddata/master/quests/cars.csv"
 df = pd.read_csv(url)
 st.write("Dataset preview")
 st.dataframe(df.style.highlight_max(axis=0))
+
 st.data_editor(
     df,
     column_config={
-        "category": st.column_config.SelectboxColumn(
+        "continent": st.column_config.SelectboxColumn(
             "origin",
             help="The category of the app",
             width="medium",
@@ -43,7 +44,6 @@ st.write("Dataset info")
 st.table(df.info())
 print("---"*40)
 st.write("Dataset description", df.describe(include="all"))
-st.table(df.describe(include="all"))
 print("---"*40)
 st.write("Missed values", df.isna().sum())
 print("---"*40)
@@ -54,22 +54,22 @@ print("---"*40)
 
 """
 
-plt.title('Distribution of cars by continent')
+# plt.title('Distribution of cars by continent')
 car_countplot = sns.countplot(x='continent', data=df, palette='plasma')
 st.pyplot(car_countplot.figure)
 
-plt.title('Distribution of cylinders by weight')
+# plt.title('Distribution of cylinders by weight')
 car_violinplot1 = sns.violinplot(x='cylinders', y='weightlbs', data=df, palette='plasma')
 st.pyplot(car_violinplot1.figure)
 
-plt.title('Distribution of cylinders by cubicinches')
+# plt.title('Distribution of cylinders by cubicinches')
 car_violinplot2 = sns.violinplot(x='cylinders', y='cubicinches', data=df, palette='plasma')
 st.pyplot(car_violinplot2.figure)
 
-plt.title('Heatmap of correlation')
+# plt.title('Heatmap of correlation')
 car_heatmap = sns.heatmap(df.select_dtypes("number").corr(), annot=True, center=0, cmap='plasma')
 st.pyplot(car_heatmap.figure)
 
-plt.title('Pairplot of numerical columns')
+# plt.title('Pairplot of numerical columns')
 car_pairplot = sns.pairplot(df.select_dtypes("number"), palette='plasma')
 st.pyplot(car_pairplot.figure)
